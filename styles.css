@@ -1,4 +1,3 @@
-/* style.css */
 
 *{
   margin:0;
@@ -8,30 +7,46 @@
 
 body{
   font-family:Arial, Helvetica, sans-serif;
-
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-
   color:white;
-
-  min-height:100vh;
+  overflow-x:hidden;
 }
 
-.container{
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
+#bg-video{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
+
+.overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.5);
+  z-index:-1;
 }
 
 header{
+  width:100%;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
 
   padding:20px 60px;
 
-  background:rgba(255,255,255,0.08);
+  position:fixed;
+
+  background:rgba(0,0,0,0.3);
 
   backdrop-filter:blur(10px);
+
+  z-index:1000;
 }
 
 header h1{
@@ -41,18 +56,19 @@ header h1{
 nav a{
   color:white;
   text-decoration:none;
-
   margin-left:20px;
-
   transition:0.3s;
+  padding: 12px;
+  border-radius: 8px;
 }
 
 nav a:hover{
-  color:#00d9ff;
+  color:#ffffff;
+  background: #00d9ff;
 }
 
 .hero{
-  flex:1;
+  min-height:100vh;
 
   display:flex;
   justify-content:center;
@@ -60,7 +76,7 @@ nav a:hover{
 
   text-align:center;
 
-  padding:40px;
+  padding:100px 20px;
 }
 
 .hero-text{
@@ -68,51 +84,27 @@ nav a:hover{
 }
 
 .hero h2{
-  font-size:60px;
+  font-size:70px;
   margin-bottom:20px;
 }
 
 .hero p{
-  font-size:20px;
+  font-size:22px;
   line-height:1.6;
-
-  margin-bottom:40px;
+  margin-bottom:35px;
 }
 
-.content{
-  flex:1;
-
+.buttons{
   display:flex;
-  flex-direction:column;
   justify-content:center;
-  align-items:center;
-
-  text-align:center;
-
-  padding:60px;
-}
-
-.content h2{
-  font-size:50px;
-  margin-bottom:20px;
-}
-
-.content p{
-  max-width:700px;
-
-  font-size:20px;
-  line-height:1.6;
-
-  margin-bottom:40px;
+  gap:20px;
+  flex-wrap:wrap;
 }
 
 .btn{
-  display:inline-block;
-
   padding:15px 35px;
 
   background:#00d9ff;
-
   color:black;
 
   text-decoration:none;
@@ -126,22 +118,27 @@ nav a:hover{
 
 .btn:hover{
   transform:scale(1.1);
-
   background:white;
 }
 
-.form-section{
-  flex:1;
+.info{
+  min-height:100vh;
 
   display:flex;
   justify-content:center;
   align-items:center;
 
-  padding:50px;
+  gap:30px;
+
+  flex-wrap:wrap;
+
+  padding:100px 40px;
+
+  background:rgba(0,0,0,0.6);
 }
 
-.form-box{
-  width:400px;
+.box{
+  width:320px;
 
   background:rgba(255,255,255,0.1);
 
@@ -151,93 +148,275 @@ nav a:hover{
 
   backdrop-filter:blur(8px);
 
-  box-shadow:0 0 20px rgba(0,0,0,0.4);
+  transition:0.3s;
 }
 
-.form-box h2{
-  text-align:center;
-  margin-bottom:30px;
+.box:hover{
+  transform:translateY(-10px);
 }
 
-form{
-  display:flex;
-  flex-direction:column;
-}
-
-form input,
-form textarea{
+.box h3{
   margin-bottom:20px;
-
-  padding:15px;
-
-  border:none;
-
-  border-radius:10px;
-
-  outline:none;
+  font-size:28px;
 }
 
-form textarea{
-  resize:none;
-  height:120px;
+.games-page{
+  background:linear-gradient(135deg,#141e30,#243b55);
 }
 
-form button{
-  padding:15px;
+.games{
+  padding:140px 40px 80px;
 
-  border:none;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-  border-radius:10px;
+  flex-wrap:wrap;
 
-  background:#00d9ff;
+  gap:30px;
+}
 
-  font-size:18px;
+.game-card{
+  width:350px;
 
-  font-weight:bold;
+  background:rgba(255,255,255,0.08);
 
-  cursor:pointer;
+  border-radius:20px;
+
+  overflow:hidden;
+
+  backdrop-filter:blur(8px);
 
   transition:0.3s;
 }
 
-form button:hover{
-  background:white;
+.game-card:hover{
+  transform:translateY(-10px);
 }
 
-.voltar{
-  margin-top:25px;
-  text-align:center;
+.game-card img{
   width:100%;
+  height:220px;
+  object-fit:cover;
 }
+
+.game-card h2{
+  padding:20px 20px 10px;
+}
+
+.game-card p{
+  padding:0 20px 25px;
+}
+
+.draw-page{
+  background:linear-gradient(135deg,#232526,#414345);
+}
+
+.drawings{
+  padding:140px 40px 80px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  gap:30px;
+
+  flex-wrap:wrap;
+}
+
+.drawing-card{
+  width:350px;
+
+  background:rgba(255,255,255,0.08);
+
+  border-radius:20px;
+
+  overflow:hidden;
+
+  transition:0.3s;
+}
+
+.drawing-card:hover{
+  transform:scale(1.03);
+}
+
+.drawing-card img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+}
+
+.drawing-card h2{
+  padding:20px;
+  text-align:center;
+}
+
 
 footer{
   text-align:center;
-
-  padding:20px;
-
-  background:rgba(255,255,255,0.08);
+  padding:25px;
+  background:rgba(0,0,0,0.4);
 }
 
-@media(max-width:768px){
+.games-info{
+  min-height:70vh;
 
-  header{
-    flex-direction:column;
-  }
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-  nav{
-    margin-top:15px;
-  }
+  text-align:center;
 
-  .hero h2{
-    font-size:40px;
-  }
+  padding:80px 40px;
+}
 
-  .content h2{
-    font-size:35px;
-  }
+.info-text{
+  max-width:900px;
 
-  .form-box{
-    width:90%;
-  }
+  background:rgba(255,255,255,0.08);
 
+  padding:50px;
+
+  border-radius:20px;
+
+  backdrop-filter:blur(8px);
+
+  margin:auto;
+}
+
+.info-text h2{
+  font-size:50px;
+  margin-bottom:25px;
+}
+
+.info-text p{
+  font-size:22px;
+  line-height:1.8;
+}
+
+.extra-section{
+  min-height:100vh;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:100px 40px;
+}
+
+.extra-section h2{
+  font-size:55px;
+  margin-bottom:60px;
+}
+
+.extra-boxes{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  gap:30px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:60px;
+}
+
+.extra-box{
+  width:320px;
+
+  background:rgba(255,255,255,0.08);
+
+  padding:40px;
+
+  border-radius:20px;
+
+  backdrop-filter:blur(8px);
+
+  transition:0.3s;
+
+  text-align:center;
+}
+
+.extra-box:hover{
+  transform:translateY(-10px);
+}
+
+.extra-box h3{
+  font-size:30px;
+  margin-bottom:20px;
+}
+
+.extra-box p{
+  line-height:1.7;
+  font-size:18px;
+}
+
+.draw-top{
+  min-height:70vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:120px 30px 60px;
+}
+
+.draw-top-text{
+  max-width:800px;
+}
+
+.draw-top h2{
+  font-size:70px;
+  margin-bottom:25px;
+}
+
+.draw-top p{
+  font-size:22px;
+  line-height:1.8;
+}
+
+.draw-info{
+  min-height:70vh;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  padding:80px 30px;
+}
+
+.draw-info-box{
+  max-width:900px;
+
+  text-align:center;
+
+  background:rgba(255,255,255,0.08);
+
+  padding:60px;
+
+  border-radius:25px;
+
+  backdrop-filter:blur(8px);
+}
+
+.draw-info-box h2{
+  font-size:55px;
+  margin-bottom:30px;
+}
+
+.final-draw h2{
+  align-items: center;
+  text-align: center;
+  margin-bottom: 10px;
+
+}
+.final-draw p{
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
 }
